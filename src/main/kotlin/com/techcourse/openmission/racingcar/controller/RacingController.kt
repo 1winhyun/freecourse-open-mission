@@ -4,31 +4,31 @@ import com.techcourse.openmission.racingcar.domain.Car
 import com.techcourse.openmission.racingcar.domain.RaceResult
 import com.techcourse.openmission.racingcar.domain.validator.RacingCarValidator
 import com.techcourse.openmission.racingcar.service.RacingGameService
-import com.techcourse.openmission.racingcar.view.InputView
-import com.techcourse.openmission.racingcar.view.OutputView
+import com.techcourse.openmission.racingcar.view.RacingCarInput
+import com.techcourse.openmission.racingcar.view.RacingCarOutput
 
 class RacingController(
-    private val inputView: InputView,
-    private val outputView: OutputView,
+    private val racingCarInput: RacingCarInput,
+    private val racingCarOutput: RacingCarOutput,
     private val racingGameService: RacingGameService,
     private val racingCarValidator: RacingCarValidator
 ) {
     fun run() {
-        val names = inputView.inputCarNames()
+        val names = racingCarInput.inputCarNames()
         val cars = parseCars(names)
 
-        val attempts = inputView.inputAttempts()
+        val attempts = racingCarInput.inputAttempts()
         val attempt = racingCarValidator.parseAndValidateAttempts(attempts)
 
-        outputView.printResultStart()
+        racingCarOutput.printResultStart()
 
         repeat(attempt) {
             racingGameService.oneRace(cars)
-            outputView.printRacingRound(cars)
+            racingCarOutput.printRacingRound(cars)
         }
 
         val winners = RaceResult.pickWinners(cars)
-        outputView.printWinners(winners)
+        racingCarOutput.printWinners(winners)
     }
 
     private fun parseCars(names: String?): List<Car> {

@@ -2,7 +2,7 @@ package com.techcourse.openmission.racingcar.view
 
 import com.techcourse.openmission.racingcar.domain.Car
 
-class OutputView {
+class RacingCarOutput {
     fun printResultStart() {
         println()
         println("실행결과")
