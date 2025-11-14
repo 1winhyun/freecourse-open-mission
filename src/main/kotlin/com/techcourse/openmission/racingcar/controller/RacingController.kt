@@ -8,10 +8,10 @@ import com.techcourse.openmission.racingcar.view.RacingCarInput
 import com.techcourse.openmission.racingcar.view.RacingCarOutput
 
 class RacingController(
-    private val racingCarInput: RacingCarInput,
-    private val racingCarOutput: RacingCarOutput,
-    private val racingGameService: RacingGameService,
-    private val racingCarValidator: RacingCarValidator
+    private val racingCarInput: RacingCarInput = RacingCarInput(),
+    private val racingCarOutput: RacingCarOutput = RacingCarOutput(),
+    private val racingGameService: RacingGameService = RacingGameService(),
+    private val racingCarValidator: RacingCarValidator = RacingCarValidator(),
 ) {
     fun run() {
         val names = racingCarInput.inputCarNames()
