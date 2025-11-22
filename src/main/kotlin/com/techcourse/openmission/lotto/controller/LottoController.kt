@@ -22,5 +22,4 @@ class LottoController {
 
         lottoOutput.printStats(result, yield)
     }
-
 }
