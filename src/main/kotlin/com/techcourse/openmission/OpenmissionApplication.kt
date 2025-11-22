@@ -3,8 +3,6 @@ package com.techcourse.openmission
 import com.techcourse.openmission.guessing.controller.GuessController
 import com.techcourse.openmission.lotto.controller.LottoController
 import com.techcourse.openmission.racingcar.controller.RacingController
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 
 class OpenmissionApplication
 
