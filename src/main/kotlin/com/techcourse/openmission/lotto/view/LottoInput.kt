@@ -25,6 +25,9 @@ class LottoInput {
         while (true) {
             try {
                 val bonusNumber = inputBonusNumber()
+
+                LottoValidator.validateWinningAndBonusNumbers(winningNumbers, bonusNumber)
+
                 return WinningNumber(winningNumbers, bonusNumber)
             } catch (e: IllegalArgumentException) {
                 println(e.message)
