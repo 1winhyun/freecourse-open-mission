@@ -78,7 +78,7 @@ object LottoValidator {
 
     private fun iSNumberInRange(numbers: List<Int>): Boolean {
         for (number in numbers) {
-            if (number < Numbers.MIN_NUMBER || number >= Numbers.MAX_NUMBER) {
+            if (number < Numbers.MIN_NUMBER || number > Numbers.MAX_NUMBER) {
                 return false
             }
         }
