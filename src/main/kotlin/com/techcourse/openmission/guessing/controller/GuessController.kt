@@ -6,11 +6,13 @@ import com.techcourse.openmission.guessing.contstant.Numbers
 import com.techcourse.openmission.guessing.domain.GameType
 import com.techcourse.openmission.guessing.domain.GuessResult
 import com.techcourse.openmission.guessing.service.GuessService
+import com.techcourse.openmission.guessing.valitdator.GuessValidator
 import com.techcourse.openmission.guessing.view.GuessInput
 import com.techcourse.openmission.guessing.view.GuessOutput
 
 class GuessController(
     private val guessService: GuessService = GuessService(),
+    private val guessValidator: GuessValidator = GuessValidator(),
     private val guessOutput: GuessOutput = GuessOutput(),
     private val guessInput: GuessInput = GuessInput()
 ) {
@@ -31,7 +33,7 @@ class GuessController(
         while (true) {
             val raw = guessInput.readVersion()
             try {
-                return guessService.parseGameType(raw)
+                return guessValidator.parseGameType(raw)
             } catch (e: IllegalArgumentException) {
                 guessOutput.printError(e.message ?: Errors.INVALID_GAMETYPE)
             }
@@ -49,7 +51,7 @@ class GuessController(
             attempts++
 
             try {
-                val guess = guessService.parseAndValidateNumberGuess(raw, min, max)
+                val guess = guessValidator.parseAndValidateNumberGuess(raw, min, max)
                 val result = guessService.judgeNumberGuess(answer, guess)
 
                 when (result) {
@@ -85,7 +87,7 @@ class GuessController(
             attempts++
 
             try {
-                val guess = guessService.parseAndValidateAlphabetGuess(raw, min, max)
+                val guess = guessValidator.parseAndValidateAlphabetGuess(raw, min, max)
                 val result = guessService.judgeAlphabetGuess(answer, guess)
 
                 when (result) {
