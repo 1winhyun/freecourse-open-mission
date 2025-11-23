@@ -41,9 +41,7 @@ object LottoValidator {
     }
 
     fun validateWinningAndBonusNumbers(winningNumbers: Set<Int>, winningBonusNumber: Int) {
-        for (winningNumber in winningNumbers) {
-            requireRange(winningNumber)
-        }
+        requireRange(winningBonusNumber)
 
         if (winningNumbers.contains(winningBonusNumber)) {
             throw IllegalArgumentException(Errors.WINNING_BONUS_DUPLICATE)
