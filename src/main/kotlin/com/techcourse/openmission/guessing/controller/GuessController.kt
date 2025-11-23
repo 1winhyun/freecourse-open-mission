@@ -45,7 +45,7 @@ class GuessController(
         var attempts = 0
 
         while (true) {
-            val raw = guessInput.readNumber(min, max)
+            val raw = guessInput.readNumber()
             attempts++
 
             try {
@@ -81,7 +81,7 @@ class GuessController(
         var attempts = 0
 
         while (true) {
-            val raw = guessInput.readAlphabet(min, max)
+            val raw = guessInput.readAlphabet()
             attempts++
 
             try {

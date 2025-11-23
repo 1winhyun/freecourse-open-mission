@@ -8,12 +8,12 @@ class GuessInput {
         return readLine()?.trim().orEmpty()
     }
 
-    fun readNumber(min: Int, max: Int): String {
+    fun readNumber(): String {
         print(Messages.INPUT_NUMBER)
         return readLine()?.trim().orEmpty()
     }
 
-    fun readAlphabet(min: Char, max: Char): String {
+    fun readAlphabet(): String {
         print(Messages.INPUT_ALPHABET)
         return readLine()?.trim().orEmpty()
     }
