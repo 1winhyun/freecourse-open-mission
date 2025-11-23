@@ -2,6 +2,7 @@ package com.techcourse.openmission.racingcar.controller
 
 import com.techcourse.openmission.racingcar.domain.Car
 import com.techcourse.openmission.racingcar.domain.RaceResult
+import com.techcourse.openmission.racingcar.domain.constant.Errors
 import com.techcourse.openmission.racingcar.domain.validator.RacingCarValidator
 import com.techcourse.openmission.racingcar.service.RacingGameService
 import com.techcourse.openmission.racingcar.view.RacingCarInput
@@ -51,7 +52,7 @@ class RacingController(
     }
 
     private fun parseCars(names: String?): List<Car> {
-        val activeNames = names ?: throw IllegalArgumentException("이름 입력이 비어있습니다.")
+        val activeNames = names ?: throw IllegalArgumentException(Errors.NAME_NULL)
 
         val tokens = activeNames.split(",")
         val cars = mutableListOf<Car>()
@@ -63,7 +64,7 @@ class RacingController(
         }
 
         if (cars.isEmpty()) {
-            throw IllegalArgumentException("자동차는 한 대 이상이어야 합니다.")
+            throw IllegalArgumentException(Errors.CAR_LESS_ONE)
         }
 
         return cars
