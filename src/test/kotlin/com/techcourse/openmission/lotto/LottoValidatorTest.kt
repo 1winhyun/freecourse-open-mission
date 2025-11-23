@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
-class LottoValidatorServiceTest {
+class LottoValidatorTest {
 
     @Test
     @DisplayName("로또 번호가 6개가 아니면 오류가 발생한다.")
