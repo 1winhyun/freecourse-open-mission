@@ -1,8 +1,15 @@
 package com.techcourse.openmission.lotto.domain
 
+import com.techcourse.openmission.lotto.validator.LottoValidator
+
 class Lotto(
     val numbers: List<Int>
 ) {
+
+    init {
+        LottoValidator.validateLottoNumbers(numbers)
+    }
+
     fun countSameNumbers(numbers: Set<Int>): Int {
         var count = 0
         for (number in this.numbers) {
