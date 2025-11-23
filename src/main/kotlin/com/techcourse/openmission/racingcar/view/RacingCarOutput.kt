@@ -18,4 +18,8 @@ class RacingCarOutput {
     fun printWinners(winners: List<String>) {
         println("최종 우승자: ${winners.joinToString(", ")}")
     }
+
+    fun printError(message: String?) {
+        println(message)
+    }
 }

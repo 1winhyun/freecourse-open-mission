@@ -14,21 +14,40 @@ class RacingController(
     private val racingCarValidator: RacingCarValidator = RacingCarValidator(),
 ) {
     fun run() {
-        val names = racingCarInput.inputCarNames()
-        val cars = parseCars(names)
-
-        val attempts = racingCarInput.inputAttempts()
-        val attempt = racingCarValidator.parseAndValidateAttempts(attempts)
+        val cars = readCars()
+        val attempts = readAttempts()
 
         racingCarOutput.printResultStart()
 
-        repeat(attempt) {
+        repeat(attempts) {
             racingGameService.oneRace(cars)
             racingCarOutput.printRacingRound(cars)
         }
 
         val winners = RaceResult.pickWinners(cars)
         racingCarOutput.printWinners(winners)
+    }
+
+    private fun readCars(): List<Car> {
+        while (true) {
+            try {
+                val names = racingCarInput.inputCarNames()
+                return parseCars(names)
+            } catch (e: IllegalArgumentException) {
+                racingCarOutput.printError(e.message)
+            }
+        }
+    }
+
+    private fun readAttempts(): Int {
+        while (true) {
+            try {
+                val attempts = racingCarInput.inputAttempts()
+                return racingCarValidator.parseAndValidateAttempts(attempts)
+            } catch (e: IllegalArgumentException) {
+                racingCarOutput.printError(e.message)
+            }
+        }
     }
 
     private fun parseCars(names: String?): List<Car> {
